@@ -11,3 +11,42 @@ Hoisting: It is JavaScript's default behavior of moving declarations to the top.
 All declarations (var, let, const, function, function*, class) are "hoisted" in JavaScript.<br/>
 A variable declared by let or const has a so-called temporal dead zone (TDZ): When entering its scope, it can’t be accessed (got or set) until execution reaches the declaration.<br />
 [hoisting](https://stackoverflow.com/questions/31219420/are-variables-declared-with-let-or-const-not-hoisted-in-es6)
+
+### 3. Create Private variable in Javascript.
+Using Classic prototype pattern<br/>
+```js
+var Car = (function(){
+  var speed = 80;
+  function Car(model,wheels,seats){
+    this.model = model;
+    this.wheels = wheels;
+    this.seats = seats;
+  }
+  Car.prototype.run = function(){
+    console.log('car of model '+this.model+' having '+this.wheels+' wheels & '+this.seats+' seats is running at speed of '+speed+' km/hr');
+  }
+  return Car;
+})();
+var maruti = new Car('Maruti 800',4,5);
+maruti.run();
+```
+Using Singleton pattern<br/>
+```js
+var watch = (function(){
+  var timer = 0;
+  function increment(){
+    timer++;
+    console.log('timer value is: '+timer);
+  }
+  function decrement(){
+    timer--;
+    console.log('timer value is: '+timer);
+  }
+  return {
+   increment: increment,
+   decrement: decrement,
+   };
+})();
+watch.increment();
+watch.decrement();
+```
