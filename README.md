@@ -30,7 +30,7 @@ var Car = (function(){
 var maruti = new Car('Maruti 800',4,5);
 maruti.run();
 ```
-Using Singleton pattern<br/>
+Using Module pattern<br/>
 ```js
 var watch = (function(){
   var timer = 0;
