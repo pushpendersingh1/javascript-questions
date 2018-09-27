@@ -53,22 +53,22 @@ watch.decrement();
 Using Factory pattern<br/>
 ```js
 var CarFactory = function(model,wheels,seats){
-	var speed = 80;
-     function Car(model,wheels,seats){
-       this.model = model;
-       this.wheels = wheels;
-       this.seats = seats;
-     }
-     Car.prototype.run = function(){
-       console.log('car of model '+this.model+' having '+this.wheels+' wheels & '+this.seats+' seats is running at speed of '+speed+' km/hr');
-     }
-     Car.prototype.changeSpeed = function(newSpeed){
-       speed = newSpeed;
-     }
-     Car.prototype.getSpeed = function(){
-       return speed;  
-     }
-     return new Car(model,wheels,seats)
+   var speed = 80;
+   function Car(model,wheels,seats){
+      this.model = model;
+      this.wheels = wheels;
+      this.seats = seats;
+   }
+   Car.prototype.run = function(){
+      console.log('car of model '+this.model+' having '+this.wheels+' wheels & '+this.seats+' seats is running at speed of '+speed+' km/hr');
+   }
+   Car.prototype.changeSpeed = function(newSpeed){
+      speed = newSpeed;
+   }
+   Car.prototype.getSpeed = function(){
+      return speed;  
+   }
+   return new Car(model,wheels,seats)
 };
 var maruti = Factory('800',4,4);
 var marcedeze = Factory('AMG',4,4);
