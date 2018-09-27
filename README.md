@@ -62,7 +62,7 @@ var CarFactory = function(model,wheels,seats){
    Car.prototype.run = function(){
       console.log('car of model '+this.model+' having '+this.wheels+' wheels & '+this.seats+' seats is running at speed of '+speed+' km/hr');
    }
-   Car.prototype.changeSpeed = function(newSpeed){
+   Car.prototype.setSpeed = function(newSpeed){
       speed = newSpeed;
    }
    Car.prototype.getSpeed = function(){
@@ -70,13 +70,17 @@ var CarFactory = function(model,wheels,seats){
    }
    return new Car(model,wheels,seats)
 };
-var maruti = Factory('800',4,4);
-var marcedeze = Factory('AMG',4,4);
+var maruti = CarFactory('800',4,4);
+var marcedeze = CarFactory('AMG',4,4);
+maruti.setSpeed(100)
+maruti.getSpeed() // 100
+marcedeze.setSpeed(120)
+mercedeze.getSpeed() // 120
 ```
-## What if we want to have speed to be same in all the factory objects
-simply create speed variable outside, so it wont be part of closure which is created when new object is created.
+## What if we want to have speed to be same in all the factory objects ?
+simply create speed variable outside, so it wont be part of closure which wont be part of new object.
 ```js
-var Factory = (function(){
+var CarFactory = (function(){
    var speed = 80;
    return function(model,wheels,seats){
       function Car(model,wheels,seats){
@@ -87,7 +91,7 @@ var Factory = (function(){
       Car.prototype.run = function(){
          console.log('car of model '+this.model+' having '+this.wheels+' wheels & '+this.seats+' seats is running at speed of '+speed+' km/hr');
       }
-      Car.prototype.changeSpeed = function(newSpeed){
+      Car.prototype.setSpeed = function(newSpeed){
          speed = newSpeed;
       }
       Car.prototype.getSpeed = function(){
@@ -96,4 +100,9 @@ var Factory = (function(){
       return new Car(model,wheels,seats)
    };
 })();
+var maruti = CarFactory('800',4,4);
+var marcedeze = CarFactory('AMG',4,4);
+maruti.setSpeed(100)
+maruti.getSpeed() // 100
+mercedeze.getSpeed() // 100
 ```
