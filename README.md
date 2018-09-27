@@ -77,7 +77,7 @@ maruti.getSpeed() // 100
 marcedeze.setSpeed(120)
 mercedeze.getSpeed() // 120
 ```
-## What if we want to have speed to be same in all the factory objects ?
+## What if we want to have variable speed to be same in all the factory objects ?
 simply create speed variable outside, so it wont be part of closure which wont be part of new object.
 ```js
 var CarFactory = (function(){
